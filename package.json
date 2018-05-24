@@ -6,7 +6,7 @@
   "scripts": {
     "start": "node app.js"
   },
-  "repository": "https://github.com/rennyandres/URL-Shortener-Microservice",
+  "repository": "https://github.com/rennyandres/fcc-url-shortener",
   "author": "Renny Andres",
   "dependencies": {
     "ejs": "^2.6.1",
