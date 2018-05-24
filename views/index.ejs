@@ -1,0 +1,26 @@
+<head>
+    <title>URL Shortener Microservice</title>
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="shortcun icon" href="img/favicon.ico">
+    <link href="https://fonts.googleapis.com/css?family=Roboto+Mono:400,700" 
+          rel="stylesheet">
+</head>
+<div class="contained">
+    <h1>URL Shortener Microservice</h1>
+    <h3>
+        You can pass a URL as a parameter and it will return a shortened URL in
+        JSON format.
+    </h3>
+    <h4 class="mrg-top">Example usage:</h2>
+    <p class="snipet">
+        https://short-my-url.herokuapp.com/new/https://www.google.com
+    </p>
+    <p class="snipet">
+        https://short-my-url.herokuapp.com/new/http://foo.com:80
+    </p>
+    
+    <h4 class="mrg-top">Example output:</h2>
+    <p class="snipet">
+        { "original_url":"https://www.google.com", "short_url":"https://little-url.herokuapp.com/0" }
+    </p>
+</div>
