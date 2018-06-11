@@ -4,7 +4,7 @@
 var express = require('express');
 var app = express();
 var db = require('./db');
-
+var validUrl = require('valid-url');
 
 // CONFIG ---------------------------------------------------------------------
 app.set('view engine', 'ejs');
@@ -30,6 +30,8 @@ app.get('/:serialNum', function(req, res) {
 
 app.get('/new/*', function(req, res) {
     var myDomain = getMyDomain(req);
+    
+    console.log(validUrl.isUri(req.params[0]));
     
     db.store(myDomain, req.params[0], function(err, doc) {
         res.send((err) ? err : doc);
