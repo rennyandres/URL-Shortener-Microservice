@@ -2,13 +2,12 @@ body {
     font-family: 'Roboto Mono', monospace;
 }
 
-h3 { 
-    font-weight: 400; 
-    color: grey;
-}
+h3 {font-weight: 400;}
+
+h4 {margin-bottom: 0;}
 
 .contained {
-    max-width: 820px;
+    max-width: 600px;
     width: 100%;
     margin: 0 auto;
 }
@@ -19,7 +18,28 @@ h3 {
 
 .snipet {
     background: #e8fff7;
-    padding: 6px;
+    padding: 8px;
+    margin: 8px 0;
     border-radius: 6px;
     color: #005b3b;
+    font-size: 14px;
+}
+
+.fcc-ico {
+    width: 26px;
+    border-radius: 2px;
+    position: absolute;
+}
+
+.fcc-title {
+    color: grey;
+    display: inline-block;
+    margin: 0 0 0 35px;
+    line-height: 1.6;
+}
+
+.cfx:after {
+  content: "";
+  display: table;
+  clear: both;
 }
