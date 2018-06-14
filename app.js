@@ -4,7 +4,7 @@
 var express = require('express');
 var app = express();
 var db = require('./db');
-var validUrl = require('valid-url');
+var dns = require('dns');
 
 // CONFIG ---------------------------------------------------------------------
 app.set('view engine', 'ejs');
@@ -31,16 +31,40 @@ app.get('/:serialNum', function(req, res) {
 app.get('/new/*', function(req, res) {
     var myDomain = getMyDomain(req);
     
-    console.log(validUrl.isUri(req.params[0]));
-    
-    db.store(myDomain, req.params[0], function(err, doc) {
-        res.send((err) ? err : doc);
+    validateDNS(req.params[0], function(err, address) {
+        if(err) {
+            res.send({
+                "error" : 'We couldn\'t validate your url' 
+            });
+        }
+        else {
+            db.store(myDomain, req.params[0], function(err, doc) {
+                res.send((err) ? err : doc);
+            });            
+        }
     });
 });
+
 
 // HELPER FUNCTIONS -----------------------------------------------------------
 function getMyDomain(req) {
     return 'https://' + req.get('host') + '/';
+}
+
+function extract(fullUrl) {
+    var justDomain = new RegExp('[a-z0-9-]+(\\.[a-z0-9-]+)+', 'g');
+    return fullUrl.match(justDomain)[0];
+}
+
+function validateDNS(url, callback) {
+    dns.lookup(extract(url), function(err, address, family) {
+        if(err) {
+            callback(err, address);
+        }
+        else {
+            callback(err, address);
+        }
+    });
 }
 
 
